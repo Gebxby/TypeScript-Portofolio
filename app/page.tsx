@@ -1,0 +1,201 @@
+'use client'
+
+import Image from "next/image";
+import Link from "next/link";
+import TiltedCard from "./componets/TiltedCard/TiltedCard";
+import RotatingText from "./componets/RotatingText/RotatingText";
+import FadeContent from "./componets/FadeContent/FadeContent";
+import DecryptedText from "./componets/DecryptedText/DecryptedText";
+import { div } from "framer-motion/client";
+
+import Particles from "./componets/Particles/Particles";
+import AnimatedList from "./componets/AnimatedList/AnimatedList";
+import Marquee from "react-fast-marquee";
+import DisplayVelocity from "./componets/DisplayVelocity/DisplayVelocity";
+import VelocityShowcase from "./componets/DisplayVelocity/DisplayVelocity";
+
+
+export default function Home() {
+  const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7', 'Item 8', 'Item 9', 'Item 10'];
+
+  return (
+    <div className=" min-h-screen overflow-x-hidden">
+      {/* bg */}
+      <div className="absolute top-0 right-0 left-0 bottom-0 w-full h-full z-[-1]">
+        <Particles
+          particleColors={['#ffffff', '#ffffff']}
+          particleCount={150}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover={false}
+          alphaParticles={false}
+          disableRotation={false} />
+      </div>
+
+
+      {/* content */}
+      <div className="container  mx-auto h-full">
+        <div className="grid grid-cols-12">
+
+          <div className="col-span-6">
+            <div className="mt-50 ml-auto">
+              <div className="flex flex-col ">
+                <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
+                  <div className="flex items-center gap-3">
+                    <h1 className="text-6xl font-bold text-[#f8981d]">Hello</h1>
+                    <h1 className="text-6xl font-bold text-[#38b6ff]">Internet!</h1>
+                  </div>
+
+                </FadeContent>
+                {/* <FadeContent blur={true} duration={2500} easing="ease-out" initialOpacity={0}>
+                  <h1 className="text-4xl font-bold">My name is Gabriel</h1>
+                </FadeContent> */}
+
+              </div>
+              <br /><br />
+              <div className="flex flex-col gap-6">
+                {/* <div className="">
+                  <FadeContent blur={true} duration={5000} easing="ease-out" initialOpacity={0}>
+                    <div className="flex items-center gap-2">
+                      <h1 className=" text-2xl text-amber-50 font-bold  ">My Hobby</h1>
+                      <RotatingText
+                        texts={['Drawing', 'Sing', 'Coding', 'Thinking']}
+                        mainClassName="px-2 sm:px-2 md:px-3 bg-[#38b6ff] text-black overflow-hidden py-1 sm:py-1 md:py-2 justify-center rounded-lg text-2xl font-bold inline-flex transition-all"
+                        staggerFrom={"last"}
+                        initial={{ y: "100%" }}
+                        animate={{ y: 0 }}
+                        exit={{ y: "-120%" }}
+                        staggerDuration={0.025}
+                        splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                        transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                        rotationInterval={2000}
+                      />
+                    </div>
+
+                  </FadeContent>
+
+                </div> */}
+              </div>
+              <br />
+              <div className="">
+                <DecryptedText text="My Name is" />
+                <p className="text-[#faff00]"><DecryptedText text="Gabriel Selwas Aboyaman Fenanlampir" /></p>
+                <p>i am a undgraduate Computer science University of Indonesia, this is my second years of collage and for sure i really enjoy my collage; with my hands i do drawing, i'am a singer, i like to Photographic, i used to design (poster, website, game), and last but not least i really love coding. </p>
+              </div>
+            </div>
+
+
+
+
+          </div>
+
+          <div className="col-span-6 items-center mt-auto ml-25">
+            <TiltedCard
+              imageSrc="./assets/img/FotoProfile.jpg"
+              altText="Gabriel - A person"
+              captionText="Gabriel - A person"
+              containerHeight="350px"
+              containerWidth="350px"
+              imageHeight="350px"
+              imageWidth="350px"
+              rotateAmplitude={12}
+              scaleOnHover={1.2}
+              showMobileWarning={false}
+              showTooltip={true}
+              displayOverlayContent={true}
+              overlayContent={
+                <p className="text-2xl font-bold tilted-card-demo-text bg-[#323333] rounded-2xl px-2">
+                  Gabriel F - A Person
+                </p>
+
+
+              }
+            />
+          </div>
+          <div className="col col-span-12">
+          <div className="z-10 container mx-[500px] w-150 h-90 overflow-x-hidden mt-50 items-center col-span-6 bg-black rounded-2xl hover:border-b hover:scale-101 hover:shadow-[0_0_25px_#38b6ff] 
+  transition-all  hover:border-[#38b6ff] border-amber-50 hover:bg-gradient-to-b from-[#000000] to-[#222424] hover:rounded-2xl
+ border-2 transition all duration-500 ease-in-out">
+            <Marquee className="w-full" pauseOnHover={true} speed={90} gradient={true} autoFill={true} gradientColor="black">
+
+              <div className="flex gap-10 items-center">
+                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950 ml-10">
+                  <Image src="/assets/img/python.svg" alt="Python" width={60} height={60} />
+                </div>
+                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                  <Image src="/assets/img/js.svg" alt="JavaScript" width={60} height={60} />
+                </div>
+                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                  <Image src="/assets/img/react.svg" alt="React" width={60} height={60} />
+                </div>
+                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                  <Image src="/assets/img/dj.svg" alt="React" width={60} height={60} />
+                </div>
+                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                  <Image src="/assets/img/dart.svg" alt="React" width={60} height={60} />
+                </div>
+                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                  <Image src="/assets/img/flutter.svg" alt="React" width={60} height={60} />
+                </div>
+                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                  <Image src="/assets/img/nextjss.svg" alt="React" width={60} height={60} />
+                </div>
+                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                  <Image src="/assets/img/tailwind.svg" alt="React" width={60} height={60} />
+                </div>
+                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                  <Image src="/assets/img/ts.svg" alt="React" width={60} height={60} />
+                </div>
+              </div>
+            </Marquee>
+          </div>
+          <div className="z-10 container mx-[500px] w-150 h-90 overflow-x-hidden mt-50 items-center col-span-6 bg-black hover:border-[#38b6ff] hover:border-b hover:scale-101 hover:shadow-[0_0_25px_#38b6ff] 
+  transition-all   border-amber-50 hover:bg-gradient-to-b from-[#000000] to-[#222424] hover:rounded-2xl
+ border-2 transition all duration-500 ease-in-out">
+            <Marquee className="w-full" pauseOnHover={true} speed={90} gradient={true} autoFill={true} gradientColor="black">
+
+              <div className="flex gap-10 items-center">
+                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950 ml-10">
+                  <Image src="/assets/img/python.svg" alt="Python" width={60} height={60} />
+                </div>
+                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                  <Image src="/assets/img/js.svg" alt="JavaScript" width={60} height={60} />
+                </div>
+                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                  <Image src="/assets/img/react.svg" alt="React" width={60} height={60} />
+                </div>
+                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                  <Image src="/assets/img/dj.svg" alt="React" width={60} height={60} />
+                </div>
+                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                  <Image src="/assets/img/dart.svg" alt="React" width={60} height={60} />
+                </div>
+                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                  <Image src="/assets/img/flutter.svg" alt="React" width={60} height={60} />
+                </div>
+                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                  <Image src="/assets/img/nextjss.svg" alt="React" width={60} height={60} />
+                </div>
+                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                  <Image src="/assets/img/tailwind.svg" alt="React" width={60} height={60} />
+                </div>
+                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                  <Image src="/assets/img/ts.svg" alt="React" width={60} height={60} />
+                </div>
+              </div>
+            </Marquee>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      {/* displays skill */}
+      <div className="container  mx-auto h-full">
+        
+      </div>
+
+    </div>
+  );
+}
+
