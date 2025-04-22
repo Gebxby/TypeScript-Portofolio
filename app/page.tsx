@@ -13,10 +13,12 @@ import AnimatedList from "./componets/AnimatedList/AnimatedList";
 import Marquee from "react-fast-marquee";
 import DisplayVelocity from "./componets/DisplayVelocity/DisplayVelocity";
 import VelocityShowcase from "./componets/DisplayVelocity/DisplayVelocity";
+import Dock from "./componets/Dock/Dock";
+import SpotlightCard from "./componets/SpotlightCard/SpotlightCard";
 
 
 export default function Home() {
-  const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7', 'Item 8', 'Item 9', 'Item 10'];
+  // const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7', 'Item 8', 'Item 9', 'Item 10'];
 
   return (
     <div className=" min-h-screen overflow-x-hidden">
@@ -37,6 +39,8 @@ export default function Home() {
       {/* content */}
       <div className="container  mx-auto h-full">
         <div className="grid grid-cols-12">
+
+
 
           <div className="col-span-6">
             <div className="mt-50 ml-auto">
@@ -91,7 +95,7 @@ export default function Home() {
           </div>
 
           <div className="col-span-6 items-center mt-auto ml-25">
-            <TiltedCard
+            {/* <TiltedCard
               imageSrc="./assets/img/FotoProfile.jpg"
               altText="Gabriel - A person"
               captionText="Gabriel - A person"
@@ -108,92 +112,127 @@ export default function Home() {
                 <p className="text-2xl font-bold tilted-card-demo-text bg-[#323333] rounded-2xl px-2">
                   Gabriel F - A Person
                 </p>
-
-
               }
-            />
-          </div>
-          <div className="col col-span-12">
-          <div className="z-10 container mx-[500px] w-150 h-90 overflow-x-hidden mt-50 items-center col-span-6 bg-black rounded-2xl hover:border-b hover:scale-101 hover:shadow-[0_0_25px_#38b6ff] 
-  transition-all  hover:border-[#38b6ff] border-amber-50 hover:bg-gradient-to-b from-[#000000] to-[#222424] hover:rounded-2xl
- border-2 transition all duration-500 ease-in-out">
-            <Marquee className="w-full" pauseOnHover={true} speed={90} gradient={true} autoFill={true} gradientColor="black">
+            /> */}
 
-              <div className="flex gap-10 items-center">
-                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950 ml-10">
-                  <Image src="/assets/img/python.svg" alt="Python" width={60} height={60} />
-                </div>
-                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                  <Image src="/assets/img/js.svg" alt="JavaScript" width={60} height={60} />
-                </div>
-                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                  <Image src="/assets/img/react.svg" alt="React" width={60} height={60} />
-                </div>
-                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                  <Image src="/assets/img/dj.svg" alt="React" width={60} height={60} />
-                </div>
-                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                  <Image src="/assets/img/dart.svg" alt="React" width={60} height={60} />
-                </div>
-                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                  <Image src="/assets/img/flutter.svg" alt="React" width={60} height={60} />
-                </div>
-                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                  <Image src="/assets/img/nextjss.svg" alt="React" width={60} height={60} />
-                </div>
-                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                  <Image src="/assets/img/tailwind.svg" alt="React" width={60} height={60} />
-                </div>
-                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                  <Image src="/assets/img/ts.svg" alt="React" width={60} height={60} />
-                </div>
-              </div>
-            </Marquee>
-          </div>
-          <div className="z-10 container mx-[500px] w-150 h-90 overflow-x-hidden mt-50 items-center col-span-6 bg-black hover:border-[#38b6ff] hover:border-b hover:scale-101 hover:shadow-[0_0_25px_#38b6ff] 
-  transition-all   border-amber-50 hover:bg-gradient-to-b from-[#000000] to-[#222424] hover:rounded-2xl
- border-2 transition all duration-500 ease-in-out">
-            <Marquee className="w-full" pauseOnHover={true} speed={90} gradient={true} autoFill={true} gradientColor="black">
 
-              <div className="flex gap-10 items-center">
-                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950 ml-10">
-                  <Image src="/assets/img/python.svg" alt="Python" width={60} height={60} />
-                </div>
-                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                  <Image src="/assets/img/js.svg" alt="JavaScript" width={60} height={60} />
-                </div>
-                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                  <Image src="/assets/img/react.svg" alt="React" width={60} height={60} />
-                </div>
-                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                  <Image src="/assets/img/dj.svg" alt="React" width={60} height={60} />
-                </div>
-                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                  <Image src="/assets/img/dart.svg" alt="React" width={60} height={60} />
-                </div>
-                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                  <Image src="/assets/img/flutter.svg" alt="React" width={60} height={60} />
-                </div>
-                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                  <Image src="/assets/img/nextjss.svg" alt="React" width={60} height={60} />
-                </div>
-                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                  <Image src="/assets/img/tailwind.svg" alt="React" width={60} height={60} />
-                </div>
-                <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                  <Image src="/assets/img/ts.svg" alt="React" width={60} height={60} />
-                </div>
-              </div>
-            </Marquee>
           </div>
-        </div>
+          <div className="col col-span-12 ">
+            {/* <div className="z-10 container mx-[500px] mb-20 w-150 h-90 overflow-x-hidden mt-50 items-center col-span-6 bg-black rounded-2xl hover:border-b hover:scale-101 hover:shadow-[0_0_25px_#38b6ff] 
+  transition-all  hover:border-[#38b6ff]  hover:bg-gradient-to-b from-[#000000] to-[#222424] hover:rounded-2xl
+ border-1 transition all duration-500 ease-in-out">
+              <Marquee className="w-full" pauseOnHover={true} speed={90} gradient={true} autoFill={true} gradientColor="black">
+
+                <div className="flex gap-10 items-center">
+                  <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950 ml-10">
+                    <Image src="/assets/img/python.svg" alt="Python" width={60} height={60} />
+                  </div>
+                  <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                    <Image src="/assets/img/js.svg" alt="JavaScript" width={60} height={60} />
+                  </div>
+                  <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                    <Image src="/assets/img/react.svg" alt="React" width={60} height={60} />
+                  </div>
+                  <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                    <Image src="/assets/img/dj.svg" alt="React" width={60} height={60} />
+                  </div>
+                  <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                    <Image src="/assets/img/dart.svg" alt="React" width={60} height={60} />
+                  </div>
+                  <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                    <Image src="/assets/img/flutter.svg" alt="React" width={60} height={60} />
+                  </div>
+                  <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                    <Image src="/assets/img/nextjss.svg" alt="React" width={60} height={60} />
+                  </div>
+                  <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                    <Image src="/assets/img/tailwind.svg" alt="React" width={60} height={60} />
+                  </div>
+                  <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
+                    <Image src="/assets/img/ts.svg" alt="React" width={60} height={60} />
+                  </div>
+                </div>
+              </Marquee>
+            </div> */}
+
+
+
+          </div>
         </div>
       </div>
 
       {/* displays skill */}
       <div className="container  mx-auto h-full">
+        <div className="grid grid-cols-12 ">
+          <div className="col col-span-6">
+            <SpotlightCard className="custom-spotlight-card z-10 container mb-20 w-150 h-90 overflow-x-hidden mt-50 hover:shadow-[0_0_25px_#fa9109] transition-all duration-300 ease-in-out   " spotlightColor="rgba(248, 152, 29, 0.2)">
+              <Marquee className="w-full" pauseOnHover={true} speed={50} gradient={true} autoFill={true} gradientColor="#171717">
+
+                <div className="w-[200px] h-[200px] flex items-center justify-center border border-white rounded-2xl ml-10 mr-10">
+                  <p>Ketua Osis</p>
+                </div>
+
+                <div className="flex gap-10 items-center">
+                  {[
+                    "Ketua Panitia FPN", "Juara 1 Photographi", "Magang Di PACE-UI"
+                  ].map((judul, idx) => (
+                    <div key={idx} className="w-[200px] h-[200px] flex items-center justify-center border border-white rounded-2xl">
+                      <p>{judul}</p>
+                    </div>
+                  ))}
+                </div>
+              </Marquee>
+              <br /><br />
         
+              <h3 className="text-2xl sm:text-xl font-extrabold text-center  text-[#f8981d] drop-shadow-[0_0_10px_rgba(248,152,29,0.7)] animate-pulse tracking-wide">
+                <strong>🌟 my Experiances</strong>
+              </h3>
+            </SpotlightCard>
+          </div>
+
+          <div className="col col-span-6">
+            <SpotlightCard className="custom-spotlight-card z-10 container mb-20 w-150 h-90 overflow-x-hidden mt-50 hover:shadow-[0_0_25px_#38b6ff] transition-all duration-300 ease-in-out  " spotlightColor="rgba(56, 182, 255, 0.2)">
+              <Marquee className="w-full" pauseOnHover={true} speed={50} gradient={true} autoFill={true} gradientColor="#171717">
+
+                <div className="border-white border-1 rounded-2xl p-2 ml-10 mr-10">
+                  <Image src="/assets/img/python.svg" alt="Python" width={60} height={60} />
+                </div>
+                <div className="flex gap-10 items-center">
+                  {[
+                    "HTML", "CSS", "js", "react", "dj", "dart", "flutter", "nextjss", "tailwind", "ts", "expressjs"
+                  ].map((name, idx) => (
+                    <div key={idx} className="w-[80px] h-[80px] flex items-center justify-center border border-white rounded-2xl">
+                      <Image src={`/assets/img/${name}.svg`} alt={name} width={40} height={40} />
+                    </div>
+                  ))}
+                </div>
+              </Marquee>
+              <br />
+              <Marquee className="w-full" pauseOnHover={true} speed={50} gradient={true} autoFill={true} gradientColor="#171717" direction="right">
+
+                <div className="border-white border-1 rounded-2xl p-2 ml-10 mr-10">
+                  <Image src="/assets/img/GPT.svg" alt="Python" width={60} height={60} />
+                </div>
+                <div className="flex gap-10 items-center">
+                  {[
+                    "Deepseek", "Discord Blue Icon", "Git", "Youtube Icon", "Netlify New 2023", "Google"
+                  ].map((name, idx) => (
+                    <div key={idx} className="w-[80px] h-[80px] flex items-center justify-center border border-white rounded-2xl">
+                      <Image src={`/assets/img/${name}.svg`} alt={name} width={40} height={40} />
+                    </div>
+                  ))}
+                </div>
+              </Marquee>
+              <br /><br />
+              <h3 className="text-2xl sm:text-xl font-extrabold text-center  text-[#38c3ff] drop-shadow-[0_0_10px_rgba(248,152,29,0.7)] animate-pulse tracking-wide">
+                <strong>⚙️ my Tools and Tech i use</strong>
+              </h3>
+            </SpotlightCard>
+          </div>
+
+        </div>
       </div>
+
 
     </div>
   );
