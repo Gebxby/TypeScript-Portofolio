@@ -15,15 +15,87 @@ import DisplayVelocity from "./componets/DisplayVelocity/DisplayVelocity";
 import VelocityShowcase from "./componets/DisplayVelocity/DisplayVelocity";
 import Dock from "./componets/Dock/Dock";
 import SpotlightCard from "./componets/SpotlightCard/SpotlightCard";
+import { FloatingDock } from "./componets/Ui/Floating-Dock";
+import {
+  IconBrandGithub,
+  IconBrandSpotify,
+  IconBrandX,
+  IconBrandYoutube,
+  IconExchange,
+  IconHome,
+  IconNewSection,
+  IconPencil,
+  IconTerminal2, icons
+} from "@tabler/icons-react";
 
 
 export default function Home() {
-  // const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7', 'Item 8', 'Item 9', 'Item 10'];
+  const links = [
+    {
+      title: "Home",
+      icon: (
+        <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+
+    {
+      title: "Products Or Masterpiece",
+      icon: (
+        <IconPencil className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+    {
+      title: "Components",
+      icon: (
+        <IconNewSection className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+    {
+      title: "Spotify",
+      icon: (
+        <IconBrandSpotify className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        // <img
+        //   src="Spo"
+        //   width={20}
+        //   height={20}
+        //   alt="Aceternity Logo"
+        // />
+      ),
+      href: "#",
+    },
+    {
+      title: "Youtube",
+      icon: (
+        <IconBrandYoutube className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+
+    {
+      title: "Twitter",
+      icon: (
+        <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+    {
+      title: "GitHub",
+      icon: (
+        <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+  ];
+
+
 
   return (
     <div className=" min-h-screen overflow-x-hidden">
       {/* bg */}
-      <div className="absolute top-0 right-0 left-0 bottom-0 w-full h-full z-[-1]">
+      <div className="absolute top-0 right-0 left-0 bottom-0 w-full h-full z-[-1] ">
         <Particles
           particleColors={['#ffffff', '#ffffff']}
           particleCount={150}
@@ -33,6 +105,12 @@ export default function Home() {
           moveParticlesOnHover={false}
           alphaParticles={false}
           disableRotation={false} />
+      </div>
+      <div className="w-full flex justify-center pt-20 ">
+        <FloatingDock
+          mobileClassName="translate-y-20" // only for demo, remove for production
+          items={links}
+        />
       </div>
 
 
@@ -183,7 +261,7 @@ export default function Home() {
                 </div>
               </Marquee>
               <br /><br />
-        
+
               <h3 className="text-2xl sm:text-xl font-extrabold text-center  text-[#f8981d] drop-shadow-[0_0_10px_rgba(248,152,29,0.7)] animate-pulse tracking-wide">
                 <strong>🌟 my Experiances</strong>
               </h3>
@@ -197,6 +275,7 @@ export default function Home() {
                 <div className="border-white border-1 rounded-2xl p-2 ml-10 mr-10">
                   <Image src="/assets/img/python.svg" alt="Python" width={60} height={60} />
                 </div>
+                
                 <div className="flex gap-10 items-center">
                   {[
                     "HTML", "CSS", "js", "react", "dj", "dart", "flutter", "nextjss", "tailwind", "ts", "expressjs"
@@ -213,6 +292,9 @@ export default function Home() {
                 <div className="border-white border-1 rounded-2xl p-2 ml-10 mr-10">
                   <Image src="/assets/img/GPT.svg" alt="Python" width={60} height={60} />
                 </div>
+                {/* <div className="border-white border-1 rounded-2xl p-2 ml-10 mr-10">
+                  <Image src="https://assets.aceternity.com/logo-dark.png" alt="Ui aceternity" width={60} height={60} />
+                </div> */}
                 <div className="flex gap-10 items-center">
                   {[
                     "Deepseek", "Discord Blue Icon", "Git", "Youtube Icon", "Netlify New 2023", "Google"
