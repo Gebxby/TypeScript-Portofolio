@@ -1,322 +1,311 @@
-'use client'
-
-import Image from "next/image";
-import Link from "next/link";
-import TiltedCard from "./componets/TiltedCard/TiltedCard";
-import RotatingText from "./componets/RotatingText/RotatingText";
-import FadeContent from "./componets/FadeContent/FadeContent";
-import DecryptedText from "./componets/DecryptedText/DecryptedText";
-import { div } from "framer-motion/client";
-
-import Particles from "./componets/Particles/Particles";
-import AnimatedList from "./componets/AnimatedList/AnimatedList";
-import Marquee from "react-fast-marquee";
-import DisplayVelocity from "./componets/DisplayVelocity/DisplayVelocity";
-import VelocityShowcase from "./componets/DisplayVelocity/DisplayVelocity";
-import Dock from "./componets/Dock/Dock";
-import SpotlightCard from "./componets/SpotlightCard/SpotlightCard";
-import { FloatingDock } from "./componets/Ui/Floating-Dock";
 import {
-  IconBrandGithub,
-  IconBrandSpotify,
-  IconBrandX,
-  IconBrandYoutube,
-  IconExchange,
-  IconHome,
-  IconNewSection,
-  IconPencil,
-  IconTerminal2, icons
-} from "@tabler/icons-react";
+  ArrowUpRight,
+  BriefcaseBusiness,
+  Code2,
+  Github,
+  GraduationCap,
+  Mail,
+  MapPin,
+  Palette,
+  Youtube,
+} from "lucide-react";
+import { getHomeContent, type IconName, type StatTone } from "@/lib/homeContent";
+import { toYouTubeEmbedUrl } from "@/lib/youtube";
 
+export const dynamic = "force-dynamic";
 
-export default function Home() {
-  const links = [
-    {
-      title: "Home",
-      icon: (
-        <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "#",
-    },
+const iconMap = {
+  briefcase: BriefcaseBusiness,
+  code: Code2,
+  palette: Palette,
+} satisfies Record<IconName, typeof Code2>;
 
-    {
-      title: "Products Or Masterpiece",
-      icon: (
-        <IconPencil className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "#",
-    },
-    {
-      title: "Components",
-      icon: (
-        <IconNewSection className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "#",
-    },
-    {
-      title: "Spotify",
-      icon: (
-        <IconBrandSpotify className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-        // <img
-        //   src="Spo"
-        //   width={20}
-        //   height={20}
-        //   alt="Aceternity Logo"
-        // />
-      ),
-      href: "#",
-    },
-    {
-      title: "Youtube",
-      icon: (
-        <IconBrandYoutube className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "#",
-    },
+const statToneClass = {
+  dark: "text-[#181817]",
+  green: "text-[#184f42]",
+  orange: "text-[#b45c33]",
+} satisfies Record<StatTone, string>;
 
-    {
-      title: "Twitter",
-      icon: (
-        <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "#",
-    },
-    {
-      title: "GitHub",
-      icon: (
-        <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "#",
-    },
-  ];
-
-
+export default async function Home() {
+  const content = await getHomeContent();
+  const {
+    nav,
+    profile,
+    hero,
+    focusAreas,
+    experienceSection,
+    workSection,
+    stackSection,
+    mediaSection,
+    contactSection,
+  } = content;
+  const secondaryCtaIsGithub = hero.secondaryCtaLabel.toLowerCase().includes("git");
+  const SecondaryCtaIcon = secondaryCtaIsGithub ? Github : ArrowUpRight;
 
   return (
-    <div className=" min-h-screen overflow-x-hidden">
-      {/* bg */}
-      <div className="absolute top-0 right-0 left-0 bottom-0 w-full h-full z-[-1] ">
-        <Particles
-          particleColors={['#ffffff', '#ffffff']}
-          particleCount={150}
-          particleSpread={10}
-          speed={0.1}
-          particleBaseSize={100}
-          moveParticlesOnHover={false}
-          alphaParticles={false}
-          disableRotation={false} />
-      </div>
-      <div className="w-full flex justify-center pt-20 ">
-        <FloatingDock
-          mobileClassName="translate-y-20" // only for demo, remove for production
-          items={links}
-        />
-      </div>
+    <main className="min-h-screen bg-[#f7f8f5] text-[#181817]">
+      <header className="sticky top-0 z-50 border-b border-black/10 bg-[#f7f8f5]/90 backdrop-blur-xl">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+          <a href="#top" className="text-sm font-semibold text-[#1f4f46] uppercase">
+            {nav.brandLabel}
+          </a>
+          <div className="hidden items-center gap-6 text-sm text-black/60 md:flex">
+            {nav.items.map((item) => (
+              <a key={`${item.href}-${item.label}`} href={item.href} className="transition hover:text-black">
+                {item.label}
+              </a>
+            ))}
+          </div>
+          <a
+            href={`mailto:${profile.email}`}
+            className="inline-flex h-10 items-center gap-2 rounded-[8px] bg-[#184f42] px-4 text-sm font-medium text-white transition hover:bg-[#123c33]"
+          >
+            <Mail aria-hidden className="h-4 w-4" />
+            {nav.contactLabel}
+          </a>
+        </nav>
+      </header>
 
+      <section id="top" className="relative overflow-hidden border-b border-black/10">
+        <div className="absolute inset-y-0 right-0 hidden w-[48%] lg:block">
+          <img
+            src={profile.portrait}
+            alt={`Portrait of ${profile.name}`}
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#f7f8f5] via-[#f7f8f5]/80 to-[#f7f8f5]/15" />
+        </div>
 
-      {/* content */}
-      <div className="container  mx-auto h-full">
-        <div className="grid grid-cols-12">
+        <div className="mx-auto grid min-h-[78svh] max-w-6xl items-center gap-12 px-5 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
+          <div className="relative z-10 max-w-3xl">
+            <p className="mb-5 inline-flex items-center gap-2 rounded-[8px] border border-black/10 bg-white/70 px-3 py-2 text-sm font-medium text-black/65">
+              <GraduationCap aria-hidden className="h-4 w-4 text-[#b45c33]" />
+              {hero.badge || profile.role}
+            </p>
+            <h1 className="max-w-4xl text-5xl font-semibold leading-[0.98] text-[#171717] sm:text-6xl lg:text-7xl">
+              {hero.headline}
+            </h1>
+            <p className="mt-7 max-w-2xl text-base leading-8 text-black/66 sm:text-lg">{hero.intro}</p>
 
-
-
-          <div className="col-span-6">
-            <div className="mt-50 ml-auto">
-              <div className="flex flex-col ">
-                <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
-                  <div className="flex items-center gap-3">
-                    <h1 className="text-6xl font-bold text-[#f8981d]">Hello</h1>
-                    <h1 className="text-6xl font-bold text-[#38b6ff]">Internet!</h1>
-                  </div>
-
-                </FadeContent>
-                {/* <FadeContent blur={true} duration={2500} easing="ease-out" initialOpacity={0}>
-                  <h1 className="text-4xl font-bold">My name is Gabriel</h1>
-                </FadeContent> */}
-
-              </div>
-              <br /><br />
-              <div className="flex flex-col gap-6">
-                {/* <div className="">
-                  <FadeContent blur={true} duration={5000} easing="ease-out" initialOpacity={0}>
-                    <div className="flex items-center gap-2">
-                      <h1 className=" text-2xl text-amber-50 font-bold  ">My Hobby</h1>
-                      <RotatingText
-                        texts={['Drawing', 'Sing', 'Coding', 'Thinking']}
-                        mainClassName="px-2 sm:px-2 md:px-3 bg-[#38b6ff] text-black overflow-hidden py-1 sm:py-1 md:py-2 justify-center rounded-lg text-2xl font-bold inline-flex transition-all"
-                        staggerFrom={"last"}
-                        initial={{ y: "100%" }}
-                        animate={{ y: 0 }}
-                        exit={{ y: "-120%" }}
-                        staggerDuration={0.025}
-                        splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-                        transition={{ type: "spring", damping: 30, stiffness: 400 }}
-                        rotationInterval={2000}
-                      />
-                    </div>
-
-                  </FadeContent>
-
-                </div> */}
-              </div>
-              <br />
-              <div className="">
-                <DecryptedText text="My Name is" />
-                <p className="text-[#faff00]"><DecryptedText text="Gabriel Selwas Aboyaman Fenanlampir" /></p>
-                <p>i am a undgraduate Computer science University of Indonesia, this is my second years of collage and for sure i really enjoy my collage; with my hands i do drawing, i'am a singer, i like to Photographic, i used to design (poster, website, game), and last but not least i really love coding. </p>
-              </div>
+            <div className="mt-9 flex flex-wrap items-center gap-3">
+              <a
+                href={hero.primaryCtaHref}
+                className="inline-flex h-11 items-center gap-2 rounded-[8px] bg-[#181817] px-5 text-sm font-medium text-white transition hover:bg-[#2a2a28]"
+              >
+                {hero.primaryCtaLabel}
+                <ArrowUpRight aria-hidden className="h-4 w-4" />
+              </a>
+              <a
+                href={hero.secondaryCtaHref}
+                target={hero.secondaryCtaHref.startsWith("#") ? undefined : "_blank"}
+                rel={hero.secondaryCtaHref.startsWith("#") ? undefined : "noopener noreferrer"}
+                className="inline-flex h-11 items-center gap-2 rounded-[8px] border border-black/15 bg-white/70 px-5 text-sm font-medium text-black/75 transition hover:border-black/35 hover:text-black"
+              >
+                <SecondaryCtaIcon aria-hidden className="h-4 w-4" />
+                {hero.secondaryCtaLabel}
+              </a>
             </div>
 
-
-
-
+            <div className="mt-10 grid max-w-2xl grid-cols-1 gap-3 text-sm text-black/65 sm:grid-cols-3">
+              {hero.stats.map((stat) => (
+                <div key={`${stat.value}-${stat.label}`} className="border-l border-black/15 pl-4">
+                  <span className={`block text-2xl font-semibold ${statToneClass[stat.tone]}`}>{stat.value}</span>
+                  {stat.label}
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="col-span-6 items-center mt-auto ml-25">
-            {/* <TiltedCard
-              imageSrc="./assets/img/FotoProfile.jpg"
-              altText="Gabriel - A person"
-              captionText="Gabriel - A person"
-              containerHeight="350px"
-              containerWidth="350px"
-              imageHeight="350px"
-              imageWidth="350px"
-              rotateAmplitude={12}
-              scaleOnHover={1.2}
-              showMobileWarning={false}
-              showTooltip={true}
-              displayOverlayContent={true}
-              overlayContent={
-                <p className="text-2xl font-bold tilted-card-demo-text bg-[#323333] rounded-2xl px-2">
-                  Gabriel F - A Person
-                </p>
+          <div className="relative z-10 aspect-[4/5] overflow-hidden rounded-[8px] border border-black/10 bg-white shadow-sm lg:hidden">
+            <img src={profile.portrait} alt={`Portrait of ${profile.name}`} className="h-full w-full object-cover object-center" />
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 py-16">
+        <div className="grid gap-4 md:grid-cols-3">
+          {focusAreas.map((area) => {
+            const Icon = iconMap[area.icon];
+
+            return (
+              <article key={area.title} className="rounded-[8px] border border-black/10 bg-white p-6">
+                <Icon aria-hidden className="h-5 w-5 text-[#b45c33]" />
+                <h2 className="mt-5 text-lg font-semibold text-[#181817]">{area.title}</h2>
+                <p className="mt-3 text-sm leading-6 text-black/60">{area.description}</p>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="border-y border-black/10 bg-white">
+        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <p className="text-sm font-semibold text-[#1f4f46] uppercase">{experienceSection.eyebrow}</p>
+            <h2 className="mt-3 text-3xl font-semibold text-[#181817]">{experienceSection.title}</h2>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {experienceSection.items.map((item) => (
+              <div key={item} className="rounded-[8px] border border-black/10 bg-[#f7f8f5] p-5 text-sm font-medium text-black/70">
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="work" className="mx-auto max-w-6xl px-5 py-20">
+        <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+          <div>
+            <p className="text-sm font-semibold text-[#1f4f46] uppercase">{workSection.eyebrow}</p>
+            <h2 className="mt-3 max-w-2xl text-3xl font-semibold text-[#181817] sm:text-4xl">
+              {workSection.title}
+            </h2>
+          </div>
+          <p className="max-w-sm text-sm leading-6 text-black/58">{workSection.description}</p>
+        </div>
+
+        <div className="grid gap-5 md:grid-cols-2">
+          {workSection.projects.map((project) => (
+            <article key={project.name} className="overflow-hidden rounded-[8px] border border-black/10 bg-white">
+              <div className="relative aspect-[16/9] overflow-hidden bg-[#e8ebe4]">
+                <img
+                  src={project.image}
+                  alt={`${project.name} project preview`}
+                  className="h-full w-full object-cover transition duration-500 hover:scale-[1.03]"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <p className="text-sm font-medium text-[#b45c33]">{project.type}</p>
+                    <h3 className="mt-1 text-2xl font-semibold text-[#181817]">{project.name}</h3>
+                  </div>
+                  <span className="rounded-[8px] border border-black/10 px-3 py-1 text-sm text-black/55">{project.date}</span>
+                </div>
+                <p className="mt-4 text-sm leading-6 text-black/62">{project.description}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {project.tools.map((tool) => (
+                    <span key={tool} className="rounded-[8px] bg-[#edf1ea] px-3 py-1 text-xs font-medium text-black/65">
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {project.links.length > 0 ? (
+                    project.links.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex h-10 items-center gap-2 rounded-[8px] border border-black/15 px-4 text-sm font-medium text-black/75 transition hover:border-[#184f42] hover:text-[#184f42]"
+                      >
+                        {link.label}
+                        <ArrowUpRight aria-hidden className="h-4 w-4" />
+                      </a>
+                    ))
+                  ) : (
+                    <span className="text-sm text-black/45">{workSection.emptyLinkText}</span>
+                  )}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="stack" className="border-y border-black/10 bg-[#1b1b19] text-white">
+        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 lg:grid-cols-[0.85fr_1.15fr]">
+          <div>
+            <p className="text-sm font-semibold text-[#e0a56f] uppercase">{stackSection.eyebrow}</p>
+            <h2 className="mt-3 text-3xl font-semibold">{stackSection.title}</h2>
+            <p className="mt-4 text-sm leading-6 text-white/62">{stackSection.description}</p>
+          </div>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {stackSection.tools.map((tool) => (
+              <div key={`${tool.label}-${tool.file}`} className="flex h-16 items-center gap-3 rounded-[8px] border border-white/10 bg-white/[0.06] px-4">
+                <img src={`/assets/img/${tool.file}`} alt="" className="h-7 w-7 object-contain" />
+                <span className="text-sm font-medium text-white/82">{tool.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="media" className="mx-auto max-w-6xl px-5 py-20">
+        <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+          <div>
+            <p className="text-sm font-semibold text-[#1f4f46] uppercase">{mediaSection.eyebrow}</p>
+            <h2 className="mt-3 text-3xl font-semibold text-[#181817]">{mediaSection.title}</h2>
+            <p className="mt-4 text-sm leading-6 text-black/60">{mediaSection.description}</p>
+            <a
+              href={profile.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex h-11 items-center gap-2 rounded-[8px] bg-[#c83a30] px-5 text-sm font-medium text-white transition hover:bg-[#a92f28]"
+            >
+              <Youtube aria-hidden className="h-4 w-4" />
+              {mediaSection.ctaLabel}
+            </a>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {mediaSection.videos.map((video) => {
+              const embedUrl = toYouTubeEmbedUrl(video);
+              if (!embedUrl) {
+                return (
+                  <div
+                    key={video}
+                    className="flex aspect-video items-center justify-center rounded-[8px] border border-black/10 bg-[#f1f3ee] px-4 text-center text-sm text-black/55"
+                  >
+                    Invalid YouTube URL.
+                  </div>
+                );
               }
-            /> */}
 
-
-          </div>
-          <div className="col col-span-12 ">
-            {/* <div className="z-10 container mx-[500px] mb-20 w-150 h-90 overflow-x-hidden mt-50 items-center col-span-6 bg-black rounded-2xl hover:border-b hover:scale-101 hover:shadow-[0_0_25px_#38b6ff] 
-  transition-all  hover:border-[#38b6ff]  hover:bg-gradient-to-b from-[#000000] to-[#222424] hover:rounded-2xl
- border-1 transition all duration-500 ease-in-out">
-              <Marquee className="w-full" pauseOnHover={true} speed={90} gradient={true} autoFill={true} gradientColor="black">
-
-                <div className="flex gap-10 items-center">
-                  <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950 ml-10">
-                    <Image src="/assets/img/python.svg" alt="Python" width={60} height={60} />
-                  </div>
-                  <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                    <Image src="/assets/img/js.svg" alt="JavaScript" width={60} height={60} />
-                  </div>
-                  <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                    <Image src="/assets/img/react.svg" alt="React" width={60} height={60} />
-                  </div>
-                  <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                    <Image src="/assets/img/dj.svg" alt="React" width={60} height={60} />
-                  </div>
-                  <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                    <Image src="/assets/img/dart.svg" alt="React" width={60} height={60} />
-                  </div>
-                  <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                    <Image src="/assets/img/flutter.svg" alt="React" width={60} height={60} />
-                  </div>
-                  <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                    <Image src="/assets/img/nextjss.svg" alt="React" width={60} height={60} />
-                  </div>
-                  <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                    <Image src="/assets/img/tailwind.svg" alt="React" width={60} height={60} />
-                  </div>
-                  <div className="border-white border-1 rounded-2xl p-2 bg-cyan-950">
-                    <Image src="/assets/img/ts.svg" alt="React" width={60} height={60} />
-                  </div>
-                </div>
-              </Marquee>
-            </div> */}
-
-
-
+              return (
+                <iframe
+                  key={video}
+                  src={embedUrl}
+                  title="Gabriel creative video"
+                  className="aspect-video w-full rounded-[8px] border border-black/10 bg-black"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              );
+            })}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* displays skill */}
-      <div className="container  mx-auto h-full">
-        <div className="grid grid-cols-12 ">
-          <div className="col col-span-6">
-            <SpotlightCard className="custom-spotlight-card z-10 container mb-20 w-150 h-90 overflow-x-hidden mt-50 hover:shadow-[0_0_25px_#fa9109] transition-all duration-300 ease-in-out   " spotlightColor="rgba(248, 152, 29, 0.2)">
-              <Marquee className="w-full" pauseOnHover={true} speed={50} gradient={true} autoFill={true} gradientColor="#171717">
-
-                <div className="w-[200px] h-[200px] flex items-center justify-center border border-white rounded-2xl ml-10 mr-10">
-                  <p>Ketua Osis</p>
-                </div>
-
-                <div className="flex gap-10 items-center">
-                  {[
-                    "Ketua Panitia FPN", "Juara 1 Photographi", "Magang Di PACE-UI"
-                  ].map((judul, idx) => (
-                    <div key={idx} className="w-[200px] h-[200px] flex items-center justify-center border border-white rounded-2xl">
-                      <p>{judul}</p>
-                    </div>
-                  ))}
-                </div>
-              </Marquee>
-              <br /><br />
-
-              <h3 className="text-2xl sm:text-xl font-extrabold text-center  text-[#f8981d] drop-shadow-[0_0_10px_rgba(248,152,29,0.7)] animate-pulse tracking-wide">
-                <strong>🌟 my Experiances</strong>
-              </h3>
-            </SpotlightCard>
+      <section id="contact" className="border-t border-black/10 bg-white">
+        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-16 md:grid-cols-[1fr_0.8fr] md:items-end">
+          <div>
+            <p className="text-sm font-semibold text-[#1f4f46] uppercase">{contactSection.eyebrow}</p>
+            <h2 className="mt-3 max-w-2xl text-4xl font-semibold text-[#181817]">{contactSection.title}</h2>
+            <p className="mt-4 max-w-xl text-sm leading-6 text-black/60">{contactSection.description}</p>
           </div>
 
-          <div className="col col-span-6">
-            <SpotlightCard className="custom-spotlight-card z-10 container mb-20 w-150 h-90 overflow-x-hidden mt-50 hover:shadow-[0_0_25px_#38b6ff] transition-all duration-300 ease-in-out  " spotlightColor="rgba(56, 182, 255, 0.2)">
-              <Marquee className="w-full" pauseOnHover={true} speed={50} gradient={true} autoFill={true} gradientColor="#171717">
-
-                <div className="border-white border-1 rounded-2xl p-2 ml-10 mr-10">
-                  <Image src="/assets/img/python.svg" alt="Python" width={60} height={60} />
-                </div>
-                
-                <div className="flex gap-10 items-center">
-                  {[
-                    "HTML", "CSS", "js", "react", "dj", "dart", "flutter", "nextjss", "tailwind", "ts", "expressjs"
-                  ].map((name, idx) => (
-                    <div key={idx} className="w-[80px] h-[80px] flex items-center justify-center border border-white rounded-2xl">
-                      <Image src={`/assets/img/${name}.svg`} alt={name} width={40} height={40} />
-                    </div>
-                  ))}
-                </div>
-              </Marquee>
-              <br />
-              <Marquee className="w-full" pauseOnHover={true} speed={50} gradient={true} autoFill={true} gradientColor="#171717" direction="right">
-
-                <div className="border-white border-1 rounded-2xl p-2 ml-10 mr-10">
-                  <Image src="/assets/img/GPT.svg" alt="Python" width={60} height={60} />
-                </div>
-                {/* <div className="border-white border-1 rounded-2xl p-2 ml-10 mr-10">
-                  <Image src="https://assets.aceternity.com/logo-dark.png" alt="Ui aceternity" width={60} height={60} />
-                </div> */}
-                <div className="flex gap-10 items-center">
-                  {[
-                    "Deepseek", "Discord Blue Icon", "Git", "Youtube Icon", "Netlify New 2023", "Google"
-                  ].map((name, idx) => (
-                    <div key={idx} className="w-[80px] h-[80px] flex items-center justify-center border border-white rounded-2xl">
-                      <Image src={`/assets/img/${name}.svg`} alt={name} width={40} height={40} />
-                    </div>
-                  ))}
-                </div>
-              </Marquee>
-              <br /><br />
-              <h3 className="text-2xl sm:text-xl font-extrabold text-center  text-[#38c3ff] drop-shadow-[0_0_10px_rgba(248,152,29,0.7)] animate-pulse tracking-wide">
-                <strong>⚙️ my Tools and Tech i use</strong>
-              </h3>
-            </SpotlightCard>
+          <div className="space-y-3">
+            <a
+              href={`mailto:${profile.email}`}
+              className="flex items-center justify-between rounded-[8px] border border-black/10 bg-[#f7f8f5] p-4 text-sm font-medium text-black/72 transition hover:border-[#184f42] hover:text-[#184f42]"
+            >
+              <span className="inline-flex items-center gap-3">
+                <Mail aria-hidden className="h-4 w-4" />
+                {profile.email}
+              </span>
+              <ArrowUpRight aria-hidden className="h-4 w-4" />
+            </a>
+            <div className="flex items-center gap-3 rounded-[8px] border border-black/10 bg-[#f7f8f5] p-4 text-sm font-medium text-black/62">
+              <MapPin aria-hidden className="h-4 w-4" />
+              {profile.location}
+            </div>
           </div>
-
         </div>
-      </div>
-
-
-    </div>
+      </section>
+    </main>
   );
 }
-

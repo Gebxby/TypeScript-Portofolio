@@ -1,0 +1,19 @@
+{
+        "name": "Hallo Vale",
+        "type": "Personal static website",
+        "date": "2024",
+        "image": "/assets/img/HalloVale.jpg",
+        "description": "A personal website with relationship counters, editable timeline data, greetings, and small interactive details.",
+        "tools": [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "Netlify"
+        ],
+        "links": [
+          {
+            "label": "Live",
+            "href": "http://hallovale.netlify.app/"
+          }
+        ]
+      },

@@ -1,0 +1,313 @@
+{
+  "nav": {
+    "brandLabel": "Gabriel F.",
+    "contactLabel": "Contact",
+    "items": [
+      {
+        "label": "Work",
+        "href": "#work"
+      },
+      {
+        "label": "Stack",
+        "href": "#stack"
+      },
+      {
+        "label": "Media",
+        "href": "#media"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      }
+    ]
+  },
+  "profile": {
+    "name": "Gabriel Selwas Aboyaman Fenanlampir",
+    "role": "Computer Science student / Frontend and creative technology",
+    "location": "Depok, Indonesia",
+    "email": "Gabrielfenanilmupengetahuan@gmail.com",
+    "github": "https://github.com/Gebxby",
+    "youtube": "https://www.youtube.com/channel/UCRgN9SE-nP2wimWcY1QiHYg",
+    "portrait": "/assets/img/FotoProfile.jpg"
+  },
+  "hero": {
+    "badge": "University of Indonesia computer science student",
+    "headline": "Hello World needs art and design.",
+    "intro": "I am Gabriel Selwas Aboyaman Fenanlampir, a developer and multimedia illustrator who enjoys turning ideas into masterpieces, or responsive products. My work sits between frontend engineering, UI design, illustration design 2D, and creative technology, and I am always looking for new ways to combine these skills.",
+    "primaryCtaHref": "#work",
+    "secondaryCtaLabel": "GitHub",
+    "secondaryCtaHref": "https://github.com/Gebxby",
+    "stats": [
+      {
+        "value": "5+",
+        "label": "Selected projects",
+        "tone": "green"
+      },
+      {
+        "value": "3",
+        "label": "Creative disciplines",
+        "tone": "orange"
+      },
+      {
+        "value": "2025",
+        "label": "Recent portfolio refresh",
+        "tone": "dark"
+      }
+    ]
+  },
+  "focusAreas": [
+    {
+      "title": "Frontend Engineering",
+      "description": "Building responsive interfaces with React, Next.js, Tailwind CSS, and practical UI systems.",
+      "icon": "code"
+    },
+    {
+      "title": "Multimedia Design illustration",
+      "description": "Designing calmer digital experiences with clear hierarchy, clean spacing, and usable flows.",
+      "icon": "palette"
+    },
+    {
+      "title": "Applied Projects",
+      "description": "Turning course, internship, and personal ideas into working web apps, prototypes, and tools.",
+      "icon": "briefcase"
+    }
+  ],
+  "experienceSection": {
+    "eyebrow": "Experience",
+    "title": "Practical roles, student work, and creative output.",
+    "items": [
+      "Frontend internship at PACE-UI",
+      "Streamer and content creator on YouTube",
+      "Student organization leadership"
+      
+    ]
+  },
+  "workSection": {
+    "eyebrow": "Selected work",
+    "title": "Projects that show web, product, and creative development range.",
+    "description": "A tighter view of course projects, internship work, personal sites, and experiments.",
+    "emptyLinkText": "Case study link coming soon",
+    "projects": [
+      {
+        "name": "Game prototype",
+        "type": "Game prototype experiment",
+        "date": "2024",
+        "image": "/assets/img/GamePorto.png",
+        "description": "A game prototype experiment built with Unity and C#.",
+        "tools": [
+          "unity",
+          "C#"
+        ],
+        "links": [
+          {
+            "label": "no live link",
+            "href": ""
+          }
+        ]
+      },
+      {
+        "name": "Panganon",
+        "type": "Food recommendation app",
+        "date": "2024",
+        "image": "/assets/img/Panganon.jpg",
+        "description": "A local meal discovery product built with a team using Django and Google Maps data to help people explore traditional Batak food.",
+        "tools": [
+          "Django",
+          "Python",
+          "JavaScript",
+          "Flutter"
+        ],
+        "links": []
+      },
+      {
+        "name": "Papua Center UI",
+        "type": "Company administration UI",
+        "date": "2025",
+        "image": "/assets/img/PaceUI.jpg",
+        "description": "Frontend internship work for PACE-UI, focused on website administration interfaces and practical content workflows.",
+        "tools": [
+          "PHP",
+          "SQL",
+          "HTML",
+          "CSS",
+          "JavaScript"
+        ],
+        "links": [
+          {
+            "label": "Live",
+            "href": "https://www.papua-center.or.id/index.php"
+          }
+        ]
+      },
+      {
+        "name": "Love Framing VG",
+        "type": "Photobooth web app",
+        "date": "2025",
+        "image": "/assets/img/photoboothApp.jpg",
+        "description": "A browser-based photobooth app using Express and EJS to capture photos, compose strips, and export the result.",
+        "tools": [
+          "Node.js",
+          "Express",
+          "EJS",
+          "Tailwind CSS"
+        ],
+        "links": [
+          {
+            "label": "Live",
+            "href": "https://loveframevg.up.railway.app/"
+          }
+        ]
+      },
+      {
+        "name": "Art Gallery",
+        "type": "Digital gallery website",
+        "date": "2025",
+        "image": "/assets/img/ArtGallery.jpg",
+        "description": "A static gallery site for showcasing digital and traditional artwork with a simple responsive browsing experience.",
+        "tools": [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "Netlify"
+        ],
+        "links": [
+          {
+            "label": "Live",
+            "href": "http://gbrielgallerium.netlify.app/"
+          }
+        ]
+      },
+      
+      {
+        "name": "Portfolio Web",
+        "type": "Personal portfolio",
+        "date": "2025",
+        "image": "/assets/img/Portofolio.jpg",
+        "description": "A Next.js portfolio for presenting selected projects, creative work, and development experiments in one place.",
+        "tools": [
+          "Next.js",
+          "React",
+          "TypeScript"
+        ],
+        "links": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/Gebxby"
+          }
+        ]
+      },
+      
+      {
+        "name": "web blog codeXavernico",
+        "type": "Blog",
+        "date": "2026",
+        "image": "/assets/img/codexavernicoMOCK.png",
+        "description": "my own writting web for youtube content and my on original script or story. i made it for proof that i'm not using AI to write my own script and story. i made it with spring and react for the beckend and frontend. database using atlas mongodb and for the hosting using vercel (frotnend) and koyeb (beckend). to communicate between frontend and beckend i use restAPI. also i sue googleoauth for the login and register system.",
+        "tools": [
+          "Spring",
+          "React",
+          "koyeb",
+          "vercel",
+          "mongodb",
+          "googleoauth"
+        ],
+        "links": [
+          {
+            "label": "Live",
+            "href": "https://gebxby.vercel.app/"
+          }
+        ]
+      }
+    ]
+  },
+  "stackSection": {
+    "eyebrow": "Stack",
+    "title": "Tools I use to move from idea to interface.",
+    "description": "The stack is intentionally practical: frontend frameworks, backend basics, creative tooling, and version control.",
+    "tools": [
+      {
+        "label": "TypeScript",
+        "file": "ts.svg"
+      },
+      {
+        "label": "React",
+        "file": "react.svg"
+      },
+      {
+        "label": "Next.js",
+        "file": "nextjss.svg"
+      },
+      {
+        "label": "Tailwind CSS",
+        "file": "tailwind.svg"
+      },
+      {
+        "label": "JavaScript",
+        "file": "js.svg"
+      },
+      {
+        "label": "Python",
+        "file": "python.svg"
+      },
+      {
+        "label": "Django",
+        "file": "dj.svg"
+      },
+      {
+        "label": "Flutter",
+        "file": "flutter.svg"
+      },
+      {
+        "label": "Node.js",
+        "file": "nodejs.svg"
+      },
+      {
+        "label": "Express",
+        "file": "expressjs.svg"
+      },
+      {
+        "label": "Git",
+        "file": "Git.svg"
+      },
+      {
+        "label": "Figma-minded UI",
+        "file": "CSS.svg"
+      },
+      {
+        "label": "Google",
+        "file": "google.svg"
+      },
+      {
+        "label": "ibis Paint X",
+        "file": "icons8-ibis-paint-x.svg"
+      },
+      {
+        "label": "Affinity by Canva",
+        "file": "500px-Affinity_(App)_Logo.svg.webp"
+      },
+      {
+        "label": "gemini",
+        "file": "gemini.svg"
+      }
+    ]
+  },
+  "mediaSection": {
+    "eyebrow": "Media",
+    "title": "Creative output beyond code.",
+    "description": "I also explore music, video, photography, drawing, and visual experiments.",
+    "ctaLabel": "Open YouTube",
+    "videos": [
+      "https://youtu.be/lmTkMJIzTlA?si=yzKFmHaG6rPAemm3",
+      "https://youtu.be/OWZDFv__hWg?si=_2MeA9jtSV4QD_lJ",
+      "https://youtu.be/cxJutfiL4HM?si=18-zG28nQuYn4gNo",
+      "https://youtu.be/3AhOXR3PAN0?si=ZYFvHITz0Cu1BLvE",
+      "https://youtu.be/MuCvzHTaQ9M?si=x_k_x0Dwcit4_Op_",
+      "https://youtu.be/F5HxVS95N98?si=VVuNX_WfS-uzHr4a"
+    ]
+  },
+  "contactSection": {
+    "eyebrow": "Contact",
+    "title": "Have a project, collaboration, or internship opportunity?",
+    "description": "Send a message and I will get back to you. I am open to frontend, UI, and creative technology work."
+  }
+}
